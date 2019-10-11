@@ -1,6 +1,7 @@
 package com.example.desafioconcrete.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafioconcrete.R
 import com.example.desafioconcrete.model.ItemPropities
+import com.example.desafioconcrete.view.DetailsActivity
 import com.example.desafioconcrete.view.MainActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list.view.*
@@ -51,7 +53,9 @@ class AdapterRepositories(
         }
 
 
-
+        holder.itemView.setOnClickListener {
+            context.startActivity(Intent(context,DetailsActivity::class.java))
+        }
 
 
     }

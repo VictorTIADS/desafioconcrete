@@ -110,7 +110,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
 
-        android:layout_marginEnd="15dp"
         android:background="@color/colorBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
