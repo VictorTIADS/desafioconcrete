@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.View
 import android.widget.AbsListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafioconcrete.Adapter.AdapterRepositories
@@ -42,6 +44,8 @@ class MainActivity : AppCompatActivity() {
 
 
         getRepositories()
+
+
 
 
     }

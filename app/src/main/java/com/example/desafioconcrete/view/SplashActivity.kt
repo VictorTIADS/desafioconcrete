@@ -1,11 +1,10 @@
-package com.example.desafioconcrete
+package com.example.desafioconcrete.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.desafioconcrete.view.MainActivity
-import org.jetbrains.anko.toast
+import com.example.desafioconcrete.R
 
 class SplashActivity : AppCompatActivity() {
 
