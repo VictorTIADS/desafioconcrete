@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AbsListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +15,9 @@ import com.example.desafioconcrete.R
 import com.example.desafioconcrete.connection.RetrofitRepositories
 import com.example.desafioconcrete.model.ItemPropities
 import com.example.desafioconcrete.model.Response
+import com.example.desafioconcrete.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 
@@ -33,123 +36,115 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel.getLiveData().observe(this, Observer {
+            it?.let {
 
-        SwipeLayout.setOnRefreshListener {
-            controlView(View.GONE, View.GONE, View.VISIBLE,View.GONE)
-            getRepositories()
-        }
+                val adapter = AdapterRepositories(this, it.items)
+                var layoutManeger = LinearLayoutManager(this)
+                val recyclerViewvar = recicleView
+                recyclerViewvar.layoutManager = layoutManeger
+                recyclerViewvar.adapter = adapter
+
+                controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE, false)
+                adapter.notifyDataSetChanged()
 
 
+            }
+        })
 
 
+//        SwipeLayout.setOnRefreshListener {
+//            controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE)
+//            getRepositories()
+//        }
 
-        getRepositories()
 
-
+//        getRepositories()
 
 
     }
 
 
     fun initIU(list: ArrayList<ItemPropities>) {
-        val adapter = AdapterRepositories(this, list)
-        var layoutManeger = LinearLayoutManager(this)
-        val recyclerViewvar = recicleView
-
-        recyclerViewvar.layoutManager = layoutManeger
-
-        recyclerViewvar.adapter = adapter
-
-        recicleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-
-                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
-                    isScrolling = true
-
-                }
-                super.onScrollStateChanged(recyclerView, newState)
-            }
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-
-                Log.i("aspk","CurrentItems:${currentItems} scrolloutItems:${scrollOutItems} = ${totalItems} isScrolling:${isScrolling}")
-                currentItems = layoutManeger.childCount
-                totalItems = layoutManeger.itemCount
-                scrollOutItems = layoutManeger.findFirstVisibleItemPosition()
-
-
-                if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
-                    //data fetch
-                    isScrolling = false
-                    controlView(View.GONE, View.GONE, View.VISIBLE,View.VISIBLE ,false)
-
-
-
-                    var call = RetrofitRepositories().interfaceData()
-                    call.getRepositore("language:Java", "stars", page).enqueue(object : Callback<Response> {
-                        override fun onFailure(call: Call<Response>, t: Throwable) {
-                            setContentView(R.layout.error_layout)
-
-
-                        }
-
-                        override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
-                            if (response.code() == 200) {
-
-                                val resposta = response.body()
-                                resposta?.let {
-                                    Log.i("aspk","DEVE CARREGAR")
-                                    Log.i("aspk","PAGE:${page}")
-                                    controlView(View.GONE, View.GONE, View.VISIBLE,View.GONE ,false)
-                                    var newlist = resposta.items
-                                    list.addAll(newlist)
-                                    adapter.notifyDataSetChanged()
-                                    page = page + 1
-
-
-                                }
-                            }
-                        }
-                    })
-
-
-                }
-                super.onScrolled(recyclerView, dx, dy)
-            }
-
-
-        })
 
 
     }
 
-    fun getRepositories() {
-        var call = RetrofitRepositories().interfaceData()
-        call.getRepositore("language:Java", "stars", 1).enqueue(object : Callback<Response> {
-            override fun onFailure(call: Call<Response>, t: Throwable) {
+//    fun getRepositories() {
+//        var call = RetrofitRepositories().interfaceData()
+//        call.getRepositore("language:Java", "stars", 1).enqueue(object : Callback<Response> {
+//            override fun onFailure(call: Call<Response>, t: Throwable) {
+//
+//                setContentView(R.layout.error_layout)
+//
+//            }
+//
+//            override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
+//                if (response.code() == 200) {
+//
+//                    val resposta = response.body()
+//                    resposta?.let {
+//
+//                        controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE, false)
+//                        initIU(resposta.items)
+//
+//
+//                    }
+//                }
+//            }
+//        })
+//    }
 
-                setContentView(R.layout.error_layout)
 
-            }
+    //                recicleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//
+//                        if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+//                            isScrolling = true
+//
+//                        }
+//                        super.onScrollStateChanged(recyclerView, newState)
+//                    }
+//
+//                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//
+//                        Log.i(
+//                            "aspk",
+//                            "CurrentItems:${currentItems} scrolloutItems:${scrollOutItems} = ${totalItems} isScrolling:${isScrolling}"
+//                        )
+//                        currentItems = layoutManeger.childCount
+//                        totalItems = layoutManeger.itemCount
+//                        scrollOutItems = layoutManeger.findFirstVisibleItemPosition()
+//
+//
+//                        if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
+//                            //data fetch
+//                            isScrolling = false
+//                            controlView(View.GONE, View.GONE, View.VISIBLE, View.VISIBLE, false)
+//                            page = page + 1
+//
+//
+//
+//
+//
+//
+//
+//                        }
+//                        super.onScrolled(recyclerView, dx, dy)
+//                    }
+//
+//
+//                })
 
-            override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
-                if (response.code() == 200) {
 
-                    val resposta = response.body()
-                    resposta?.let {
-
-                        controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE,false)
-                        initIU(resposta.items)
-
-
-                    }
-                }
-            }
-        })
-    }
-
-
-    private fun controlView(PorgressBar: Int, TextView: Int, RecycleView: Int, Wave:Int,Swipe: Boolean = true) {
+    private fun controlView(
+        PorgressBar: Int,
+        TextView: Int,
+        RecycleView: Int,
+        Wave: Int,
+        Swipe: Boolean = true
+    ) {
         spin_kit.visibility = PorgressBar
         lblLoading.visibility = TextView
         recicleView.visibility = RecycleView
