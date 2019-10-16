@@ -206,8 +206,8 @@ class MainActivity : AppCompatActivity() {
         Wave: Int,
         Swipe: Boolean = true
     ) {
-        spin_kit.visibility = PorgressBar
-        lblLoading.visibility = TextView
+        splash.visibility = PorgressBar
+
         recicleView.visibility = RecycleView
         SwipeLayout.isRefreshing = Swipe
         spin_kitWave.visibility = Wave

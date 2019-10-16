@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
     android:gravity="center"
-
+    android:background="#0q11f"
     android:orientation="vertical">
 
 
@@ -39,7 +39,7 @@
         android:layout_width="111dp"
         android:layout_height="69dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/message_alert"
+        android:src="@drawable/owner"
         app:layout_constraintBottom_toTopOf="@+id/lblRepositoryName"
         app:layout_constraintEnd_toEndOf="@+id/lblRepositoryName"
         app:layout_constraintStart_toStartOf="@+id/lblRepositoryName" />

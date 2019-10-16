@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.desafioconcrete.Adapter.AdapterDetails
 import com.example.desafioconcrete.Constants
 import com.example.desafioconcrete.R
