@@ -12,12 +12,13 @@ import retrofit2.Callback
 class BaseRepository {
 
 
-    fun getRepositories(): LiveData<Response> {
+
+    fun getRepositories(page:Int): LiveData<Response> {
 
         val items = MutableLiveData<Response>()
 
         var call = RetrofitRepositories().interfaceData()
-        call.getRepositore("language:Java", "stars", 1).enqueue(object : Callback<Response> {
+        call.getRepositore("language:Java", "stars", page).enqueue(object : Callback<Response> {
             override fun onFailure(call: Call<Response>, t: Throwable) {
             }
 
@@ -35,6 +36,8 @@ class BaseRepository {
 
         return items
     }
+
+
 
 
 }

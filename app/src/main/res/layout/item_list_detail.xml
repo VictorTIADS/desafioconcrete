@@ -10,25 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
 
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:background="@color/colorBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewDetails" />
 
-    <TextView
-        android:id="@+id/lblNomeSobrenomeDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nome Sobrenome"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/imageViewDetails"
-        app:layout_constraintTop_toBottomOf="@+id/lblUsernameDetails" />
+
+
+        <TextView
+            android:id="@+id/lblNomeSobrenomeDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Nome Sobrenome"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDetails"
+            app:layout_constraintTop_toBottomOf="@+id/lblUsernameDetails" />
+
 
     <TextView
         android:id="@+id/lblUsernameDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/quicksandbold"
         android:text="username"
         android:textColor="#00a0ff"
@@ -38,33 +43,37 @@
 
     <TextView
         android:id="@+id/lblDescricaoRepositorioDetails"
-        android:layout_width="245dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:maxLines="2"
+
+        android:layout_marginEnd="50dp"
         android:text="Body do pull request lorem ipsum dolor sit amet lorem ipsum dolor  ipsum dolor"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/lblTitleName"
         app:layout_constraintTop_toBottomOf="@+id/lblTitleName" />
+
 
     <TextView
         android:id="@+id/lblTitleName"
         android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:fontFamily="@font/quicksandbold"
         android:text="Título do pull request"
         android:textColor="@color/colorText1"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageViewDetails"
-        android:layout_width="36dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="48dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/lblDescricaoRepositorioDetails"
         app:layout_constraintTop_toBottomOf="@+id/lblDescricaoRepositorioDetails"
         tools:srcCompat="@drawable/owner" />

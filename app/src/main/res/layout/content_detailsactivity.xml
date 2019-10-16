@@ -8,13 +8,28 @@
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <include layout="@layout/error_view"
+        android:id="@+id/empty_state"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewDetails"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_list_detail"/>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loadspinkit"
+        style="@style/SpinKitView.Pulse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:SpinKit_Color="@color/colorBlack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

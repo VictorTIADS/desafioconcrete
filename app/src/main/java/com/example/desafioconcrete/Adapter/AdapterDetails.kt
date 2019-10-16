@@ -28,7 +28,7 @@ class AdapterDetails(
         username.text = detail.user.login
 
         ContextCompat.getDrawable(context, R.drawable.owner)?.let {
-            Picasso.get().load(detail.user.avatar_url).placeholder(it).centerCrop().resize(500, 500)
+            Picasso.get().load(detail.user.avatar_url).placeholder(it).centerCrop().resize(1000, 1000)
                 .into(image)
         }
     }

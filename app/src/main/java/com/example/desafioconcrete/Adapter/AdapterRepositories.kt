@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.desafioconcrete.Constants
 import com.example.desafioconcrete.R
 import com.example.desafioconcrete.model.ItemPropities
 import com.example.desafioconcrete.view.DetailsActivity
@@ -54,7 +55,11 @@ class AdapterRepositories(
 
 
         holder.itemView.setOnClickListener {
-            context.startActivity(Intent(context,DetailsActivity::class.java))
+            val intent = Intent(context,DetailsActivity::class.java)
+            intent.putExtra(Constants.REPOSITORIO,repositorio.name)
+            intent.putExtra(Constants.CRIADOR,repositorio.owner.login)
+            context.startActivity(intent)
+
         }
 
 

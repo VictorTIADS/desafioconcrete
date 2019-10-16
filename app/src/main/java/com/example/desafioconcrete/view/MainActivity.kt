@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AbsListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,15 +37,31 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+       viewModel()
+
+
+        SwipeLayout.setOnRefreshListener {
+            controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE)
+
+            viewModel()
+
+        }
+
+
+
+
+
+
+
+
+    }
+
+    private fun viewModel(): MainViewModel {
         val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         viewModel.getLiveData().observe(this, Observer {
             it?.let {
 
-                val adapter = AdapterRepositories(this, it.items)
-                var layoutManeger = LinearLayoutManager(this)
-                val recyclerViewvar = recicleView
-                recyclerViewvar.layoutManager = layoutManeger
-                recyclerViewvar.adapter = adapter
+                val adapter = setAdapter(it)
 
                 controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE, false)
                 adapter.notifyDataSetChanged()
@@ -53,23 +70,67 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        return viewModel
+    }
 
-//        SwipeLayout.setOnRefreshListener {
-//            controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE)
-//            getRepositories()
-//        }
+    private fun setAdapter(it: Response): AdapterRepositories {
+        val adapter = AdapterRepositories(this, it.items)
+        var layoutManeger = LinearLayoutManager(this)
+        val recyclerViewvar = recicleView
+        recyclerViewvar.layoutManager = layoutManeger
+        recyclerViewvar.adapter = adapter
+//        scrollListener(layoutManeger,adapter)
 
 
-//        getRepositories()
-
+        return adapter
 
     }
 
+//    fun scrollListener(layoutManeger:LinearLayoutManager,adapter:AdapterRepositories){
+//        recicleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//
+//                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+//                    isScrolling = true
+//
+//                }
+//                super.onScrollStateChanged(recyclerView, newState)
+//            }
+//
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//
+//                Log.i(
+//                    "aspk",
+//                    "CurrentItems:${currentItems} scrolloutItems:${scrollOutItems} = ${totalItems} isScrolling:${isScrolling}"
+//                )
+//                currentItems = layoutManeger.childCount
+//                totalItems = layoutManeger.itemCount
+//                scrollOutItems = layoutManeger.findFirstVisibleItemPosition()
+//
+//
+//                if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
+//                    //data fetch
+//                    isScrolling = false
+//                    controlView(View.GONE, View.GONE, View.VISIBLE, View.VISIBLE, false)
+//                    page = page + 1
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//                }
+//                super.onScrolled(recyclerView, dx, dy)
+//            }
+//
+//
+//        })
+//    }
 
-    fun initIU(list: ArrayList<ItemPropities>) {
 
-
-    }
 
 //    fun getRepositories() {
 //        var call = RetrofitRepositories().interfaceData()

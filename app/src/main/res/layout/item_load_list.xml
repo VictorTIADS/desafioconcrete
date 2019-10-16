@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:id="@+id/lblNomeRepositorio"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/quicksandbold"
+        android:background="#cccccc"
+        android:textColor="@color/colorText1"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageRepositorie"
+        android:layout_width="75dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblNomeRepositorio"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+    <TextView
+        android:id="@+id/lblUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/quicksandbold"
+        android:text="username"
+        android:textColor="#00a0ff"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageRepositorie"
+        app:layout_constraintStart_toStartOf="@+id/imageRepositorie"
+        app:layout_constraintTop_toBottomOf="@+id/imageRepositorie" />
+
+    <TextView
+        android:id="@+id/lblDescricaoRepositorio"
+        android:layout_width="245dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="35dp"
+        android:background="#cccccc"
+        android:ellipsize="end"
+        android:maxLines="2"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/imageRepositorie"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lblNomeRepositorio"
+        app:layout_constraintTop_toBottomOf="@+id/lblNomeRepositorio" />
+
+    <TextView
+        android:id="@+id/lblNomeSobrenome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome Sobrenome"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/lblUsername"
+        app:layout_constraintStart_toStartOf="@+id/lblUsername"
+        app:layout_constraintTop_toBottomOf="@+id/lblUsername" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="26dp"
+        android:layout_height="33dp"
+        app:layout_constraintStart_toStartOf="@+id/lblDescricaoRepositorio"
+        app:layout_constraintTop_toBottomOf="@+id/lblNomeSobrenome"
+        app:srcCompat="@drawable/source_fork" />
+
+    <TextView
+        android:id="@+id/lblNumeroFork"
+        android:layout_width="50dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/quicksandbold"
+        android:gravity="center_vertical"
+      android:background="#cccccc"
+        android:textAlignment="center"
+        android:textColor="@color/colorFork"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/lblNumeroFork"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:srcCompat="@drawable/star" />
+
+    <TextView
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+
+        android:background="@color/colorBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/lblNumeroStar"
+        android:layout_width="40dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/quicksandbold"
+        android:gravity="center_vertical"
+       android:background="#cccccc"
+        android:textAlignment="center"
+        android:textColor="@color/colorFork"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/lblLanguage"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/quicksandbold"
+        android:gravity="center_vertical"
+        android:text="Lang"
+        android:textAlignment="center"
+        android:textColor="@color/colorFork"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lblNumeroStar"
+        app:layout_constraintStart_toEndOf="@+id/lblNumeroStar"
+        app:layout_constraintTop_toTopOf="@+id/lblNumeroStar" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
