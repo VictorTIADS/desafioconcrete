@@ -9,49 +9,45 @@
 
     <TextView
         android:id="@+id/hintTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/quicksandbold"
-        android:text="Nome Repositório"
-        android:textColor="@color/colorText1"
-        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#9999"/>
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <TextView
         android:id="@+id/hintImage"
-        android:layout_width="130dp"
-        android:layout_height="104dp"
+        android:layout_width="75dp"
+        android:layout_height="62dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hintTitle"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:background="#9999"/>
+
 
     <TextView
         android:id="@+id/lblUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="21dp"
         android:layout_marginTop="5dp"
-        android:fontFamily="@font/quicksandbold"
-        android:text="username"
-        android:textColor="#00a0ff"
-        android:textSize="15sp"
+        android:background="#9999"
+
+
+
         app:layout_constraintEnd_toEndOf="@+id/hintImage"
         app:layout_constraintStart_toStartOf="@+id/hintImage"
         app:layout_constraintTop_toBottomOf="@+id/hintImage" />
 
     <TextView
         android:id="@+id/hintDescription"
-        android:layout_width="502dp"
-        android:layout_height="81dp"
+        android:layout_width="245dp"
+        android:layout_height="40dp"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="35dp"
-        android:ellipsize="end"
-        android:maxLines="4"
-        android:text="RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM."
+        android:background="#9999"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/hintImage"
         app:layout_constraintHorizontal_bias="0.0"
@@ -60,42 +56,43 @@
 
     <TextView
         android:id="@+id/lblNomeSobrenome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nome Sobrenome"
-        android:textSize="12sp"
+        android:layout_width="109dp"
+        android:layout_height="17dp"
+
+        android:background="#9999"
         app:layout_constraintEnd_toEndOf="@+id/lblUsername"
         app:layout_constraintStart_toStartOf="@+id/lblUsername"
         app:layout_constraintTop_toBottomOf="@+id/lblUsername" />
 
 
-    <ImageView
+    <TextView
         android:id="@+id/imageView2"
         android:layout_width="26dp"
         android:layout_height="33dp"
+        android:background="#9999"
         app:layout_constraintStart_toStartOf="@+id/hintDescription"
         app:layout_constraintTop_toBottomOf="@+id/lblNomeSobrenome"
         app:srcCompat="@drawable/source_fork" />
 
     <TextView
         android:id="@+id/hintNumFork"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="33dp"
         android:layout_marginStart="3dp"
-        android:fontFamily="@font/quicksandbold"
-        android:gravity="center_vertical"
-        android:text="640"
-        android:textAlignment="center"
-        android:textColor="@color/colorFork"
-        android:textSize="20sp"
+
+
+
+        android:background="#9999"
+
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-    <ImageView
+    <TextView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
+        android:layout_width="26dp"
         android:layout_height="33dp"
+        android:background="#9999"
         android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/hintNumFork"
@@ -116,15 +113,13 @@
 
     <TextView
         android:id="@+id/lblNumeroStar"
-        android:layout_width="0dp"
+        android:layout_width="40dp"
         android:layout_height="33dp"
         android:layout_marginStart="3dp"
-        android:fontFamily="@font/quicksandbold"
-        android:gravity="center_vertical"
-        android:text="98"
-        android:textAlignment="center"
-        android:textColor="@color/colorFork"
-        android:textSize="20sp"
+
+
+        android:background="#9999"
+
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
@@ -132,15 +127,13 @@
 
     <TextView
         android:id="@+id/hintLang"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="33dp"
         android:layout_marginStart="24dp"
-        android:fontFamily="@font/quicksandbold"
-        android:gravity="center_vertical"
-        android:text="Lang"
-        android:textAlignment="center"
-        android:textColor="@color/colorFork"
-        android:textSize="20sp"
+
+
+        android:background="#9999"
+
         app:layout_constraintBottom_toBottomOf="@+id/lblNumeroStar"
         app:layout_constraintStart_toEndOf="@+id/lblNumeroStar"
         app:layout_constraintTop_toTopOf="@+id/lblNumeroStar" />

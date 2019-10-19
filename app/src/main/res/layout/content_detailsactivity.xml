@@ -12,6 +12,25 @@
         android:id="@+id/empty_state"
         android:visibility="gone"/>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/loadspinkitmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include layout="@layout/hint_detail_item"/>
+            <include layout="@layout/hint_detail_item"/>
+            <include layout="@layout/hint_detail_item"/>
+            <include layout="@layout/hint_detail_item"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewDetails"
         android:layout_width="match_parent"
@@ -21,15 +40,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_list_detail"/>
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/loadspinkit"
-        style="@style/SpinKitView.Pulse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:SpinKit_Color="@color/colorBlack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.desafioconcrete
+package com.example.desafioconcrete.Constants
 
 class Constants {
     companion object{

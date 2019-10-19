@@ -18,9 +18,9 @@ class AdapterDetails(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var detail = detailsList[position]
-        var title = holder.itemView.lblTitleName
+        var title = holder.itemView.hint3
         var description = holder.itemView.lblDescricaoRepositorioDetails
-        var username = holder.itemView.lblUsernameDetails
+        var username = holder.itemView.hint2
         var image = holder.itemView.imageViewDetails
 
         title.text = detail.title

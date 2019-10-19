@@ -7,17 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.desafioconcrete.Constants
+import com.example.desafioconcrete.Constants.Constants
 import com.example.desafioconcrete.R
 import com.example.desafioconcrete.model.ItemPropities
-import com.example.desafioconcrete.view.DetailsActivity
-import com.example.desafioconcrete.view.MainActivity
+import com.example.desafioconcrete.ui.DetailsActivity
+import com.example.desafioconcrete.ui.MainActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list.view.*
 
 class AdapterRepositories(
     private val context: Context,
-    private var repositoriesList: ArrayList<ItemPropities>
+    var repositoriesList: ArrayList<ItemPropities>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var mMainActivity: MainActivity
@@ -27,13 +27,13 @@ class AdapterRepositories(
         var repositorio = repositoriesList[position]
 
 
-        var nomeRepositorio = holder.itemView.lblNomeRepositorio
-        var descricaoRepositorio = holder.itemView.lblDescricaoRepositorio
+        var nomeRepositorio = holder.itemView.hintTitle
+        var descricaoRepositorio = holder.itemView.hintDescription
         var username = holder.itemView.lblUsername
-        var NFork = holder.itemView.lblNumeroFork
+        var NFork = holder.itemView.hintNumFork
         var NStar = holder.itemView.lblNumeroStar
-        var Language = holder.itemView.lblLanguage
-        var imageR = holder.itemView.imageRepositorie
+        var Language = holder.itemView.hintLang
+        var imageR = holder.itemView.hintImage
 
 
         nomeRepositorio.text = repositorio.name

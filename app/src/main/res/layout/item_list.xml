@@ -8,26 +8,30 @@
 
 
     <TextView
-        android:id="@+id/lblNomeRepositorio"
+        android:id="@+id/hintTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="3dp"
         android:fontFamily="@font/quicksandbold"
         android:text="Nome Repositório"
         android:textColor="@color/colorText1"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/hintDescription"
+        app:layout_constraintEnd_toStartOf="@+id/hintImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageRepositorie"
+        android:id="@+id/hintImage"
         android:layout_width="75dp"
         android:layout_height="62dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lblNomeRepositorio"
+        app:layout_constraintTop_toTopOf="@+id/hintTitle"
         tools:srcCompat="@tools:sample/avatars" />
 
 
@@ -40,24 +44,25 @@
         android:text="username"
         android:textColor="#00a0ff"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageRepositorie"
-        app:layout_constraintStart_toStartOf="@+id/imageRepositorie"
-        app:layout_constraintTop_toBottomOf="@+id/imageRepositorie" />
+        app:layout_constraintEnd_toEndOf="@+id/hintImage"
+        app:layout_constraintStart_toStartOf="@+id/hintImage"
+        app:layout_constraintTop_toBottomOf="@+id/hintImage" />
 
     <TextView
-        android:id="@+id/lblDescricaoRepositorio"
-        android:layout_width="245dp"
-        android:layout_height="0dp"
+        android:id="@+id/hintDescription"
+        android:layout_width="247dp"
+        android:layout_height="50dp"
         android:layout_marginTop="3dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="35dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM."
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageRepositorie"
+        app:layout_constraintEnd_toStartOf="@+id/hintImage"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/lblNomeRepositorio"
-        app:layout_constraintTop_toBottomOf="@+id/lblNomeRepositorio" />
+        app:layout_constraintStart_toStartOf="@+id/hintTitle"
+        app:layout_constraintTop_toBottomOf="@+id/hintTitle" />
 
     <TextView
         android:id="@+id/lblNomeSobrenome"
@@ -74,12 +79,12 @@
         android:id="@+id/imageView2"
         android:layout_width="26dp"
         android:layout_height="33dp"
-        app:layout_constraintStart_toStartOf="@+id/lblDescricaoRepositorio"
+        app:layout_constraintStart_toStartOf="@+id/hintDescription"
         app:layout_constraintTop_toBottomOf="@+id/lblNomeSobrenome"
         app:srcCompat="@drawable/source_fork" />
 
     <TextView
-        android:id="@+id/lblNumeroFork"
+        android:id="@+id/hintNumFork"
         android:layout_width="0dp"
         android:layout_height="33dp"
         android:layout_marginStart="3dp"
@@ -99,7 +104,7 @@
         android:layout_height="33dp"
         android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/lblNumeroFork"
+        app:layout_constraintStart_toEndOf="@+id/hintNumFork"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         app:srcCompat="@drawable/star" />
 
@@ -132,7 +137,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/lblLanguage"
+        android:id="@+id/hintLang"
         android:layout_width="0dp"
         android:layout_height="33dp"
         android:layout_marginStart="24dp"

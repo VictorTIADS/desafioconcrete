@@ -1,25 +1,18 @@
-package com.example.desafioconcrete.view
+package com.example.desafioconcrete.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.desafioconcrete.Adapter.AdapterDetails
-import com.example.desafioconcrete.Constants
+import com.example.desafioconcrete.Constants.Constants
 import com.example.desafioconcrete.R
 import com.example.desafioconcrete.connection.RetrofitDetailsRepository
 import com.example.desafioconcrete.model.modeldetails.ItemDetails
-import com.example.desafioconcrete.model.modeldetails.ResponseDetails
-import com.facebook.shimmer.ShimmerFrameLayout
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.content_detailsactivity.*
 import kotlinx.android.synthetic.main.error_view.*
-import kotlinx.android.synthetic.main.item_list_detail.*
-import org.jetbrains.anko.longToast
-import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,10 +32,14 @@ class DetailsActivity : AppCompatActivity() {
 
 
 
+
+
+
+
         val call = RetrofitDetailsRepository().interfaceData()
         call.getDetailsRepositor(criador,repositorio).enqueue(object : Callback<ArrayList<ItemDetails>> {
             override fun onFailure(call: Call<ArrayList<ItemDetails>>, t: Throwable) {
-
+                Log.i("aspk",t.message)
                 Log.i("aspk",call.request().url().toString())
             }
 
@@ -50,11 +47,13 @@ class DetailsActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     var resposta = response.body()
                     resposta?.let {item->
+
                         Log.i("aspk",call.request().url().toString())
                         if(resposta.isNotEmpty()){
-                            controlView(View.VISIBLE,View.GONE, View.GONE)
+
 
                             initUI(resposta)
+                            controlView(View.VISIBLE,View.GONE, View.GONE)
                         }else if (resposta.isEmpty()){
                             lblRepositoryName.text = repositorio
                             controlView(View.GONE,View.GONE, View.VISIBLE)
@@ -90,7 +89,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun controlView(recycle:Int,load:Int, emptyState: Int){
         recycleViewDetails.visibility = recycle
-        loadspinkit.visibility = load
+        loadspinkitmain.visibility = load
         empty_state.visibility = emptyState
     }
 }

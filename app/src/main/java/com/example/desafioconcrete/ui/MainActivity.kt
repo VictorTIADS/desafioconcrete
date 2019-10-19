@@ -1,135 +1,95 @@
-package com.example.desafioconcrete.view
+package com.example.desafioconcrete.ui
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AbsListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.desafioconcrete.Adapter.AdapterRepositories
 import com.example.desafioconcrete.R
-import com.example.desafioconcrete.connection.RetrofitRepositories
+import com.example.desafioconcrete.listener.ScrollListener
 import com.example.desafioconcrete.model.ItemPropities
-import com.example.desafioconcrete.model.Response
 import com.example.desafioconcrete.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.toast
-import retrofit2.Call
-import retrofit2.Callback
 
 class MainActivity : AppCompatActivity() {
+    lateinit var viewModel: MainViewModel
 
-
-    var isScrolling = false
-    private var currentItems: Int = 0
-    private var totalItems: Int = 0
-    private var scrollOutItems: Int = 0
-    private var page = 1
-
+    private lateinit var adapter: AdapterRepositories
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-       viewModel()
-
-
         SwipeLayout.setOnRefreshListener {
             controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE)
-
-            viewModel()
-
+            setObservable()
         }
-
-
-
-
-
-
-
-
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        setObservable()
+        setAdapter()
     }
 
-    private fun viewModel(): MainViewModel {
-        val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.getLiveData().observe(this, Observer {
-            it?.let {
+    private fun setObservable() {
 
-                val adapter = setAdapter(it)
-
-                controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE, false)
-                adapter.notifyDataSetChanged()
-
-
-            }
+        viewModel.getCollectionAll().observe(this, Observer {
+            updateList(it)
         })
 
-        return viewModel
+        viewModel.getLiveData().observe(this, Observer {
+            updateList(it)
+            Log.i("aspk",adapter.repositoriesList.size.toString())
+            adapter.notifyDataSetChanged()
+        })
     }
 
-    private fun setAdapter(it: Response): AdapterRepositories {
-        val adapter = AdapterRepositories(this, it.items)
+    private fun updateList(it: ArrayList<ItemPropities>?) {
+        it?.let {
+            adapter.repositoriesList.addAll(it)
+            Log.i("aspk",adapter.repositoriesList.size.toString())
+            controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE, false)
+            adapter.notifyDataSetChanged()
+
+            viewModel.getCollectionAll().value = null
+        }
+    }
+
+    private fun setAdapter() {
+        val adapter = AdapterRepositories(this, ArrayList())
         var layoutManeger = LinearLayoutManager(this)
         val recyclerViewvar = recicleView
         recyclerViewvar.layoutManager = layoutManeger
         recyclerViewvar.adapter = adapter
-//        scrollListener(layoutManeger,adapter)
+        recicleView.addOnScrollListener(ScrollListener(layoutManeger) {
+            controlView(View.GONE, View.GONE, View.VISIBLE, View.VISIBLE, false)
+            viewModel.loadMore()
 
 
-        return adapter
 
+
+        })
+
+
+        this.adapter = adapter
     }
 
-//    fun scrollListener(layoutManeger:LinearLayoutManager,adapter:AdapterRepositories){
-//        recicleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-//
-//                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
-//                    isScrolling = true
-//
-//                }
-//                super.onScrollStateChanged(recyclerView, newState)
-//            }
-//
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//
-//                Log.i(
-//                    "aspk",
-//                    "CurrentItems:${currentItems} scrolloutItems:${scrollOutItems} = ${totalItems} isScrolling:${isScrolling}"
-//                )
-//                currentItems = layoutManeger.childCount
-//                totalItems = layoutManeger.itemCount
-//                scrollOutItems = layoutManeger.findFirstVisibleItemPosition()
-//
-//
-//                if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
-//                    //data fetch
-//                    isScrolling = false
-//                    controlView(View.GONE, View.GONE, View.VISIBLE, View.VISIBLE, false)
-//                    page = page + 1
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//                }
-//                super.onScrolled(recyclerView, dx, dy)
-//            }
-//
-//
-//        })
-//    }
+    private fun controlView(
+        PorgressBar: Int,
+        TextView: Int,
+        RecycleView: Int,
+        Wave: Int,
+        Swipe: Boolean = true
+    ) {
+        splash.visibility = PorgressBar
+        recicleView.visibility = RecycleView
+        SwipeLayout.isRefreshing = Swipe
+        spin_kitWave.visibility = Wave
+    }
 
+
+}
 
 
 //    fun getRepositories() {
@@ -158,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 //    }
 
 
-    //                recicleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//                recicleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 //                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
 //
 //                        if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
@@ -198,23 +158,6 @@ class MainActivity : AppCompatActivity() {
 //
 //                })
 
-
-    private fun controlView(
-        PorgressBar: Int,
-        TextView: Int,
-        RecycleView: Int,
-        Wave: Int,
-        Swipe: Boolean = true
-    ) {
-        splash.visibility = PorgressBar
-
-        recicleView.visibility = RecycleView
-        SwipeLayout.isRefreshing = Swipe
-        spin_kitWave.visibility = Wave
-    }
-
-
-}
 
 
 
