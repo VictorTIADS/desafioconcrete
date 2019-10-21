@@ -10,6 +10,7 @@ import com.example.desafioconcrete.Constants.Constants
 import com.example.desafioconcrete.R
 import com.example.desafioconcrete.connection.RetrofitDetailsRepository
 import com.example.desafioconcrete.model.modeldetails.ItemDetails
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.content_detailsactivity.*
 import kotlinx.android.synthetic.main.error_view.*
@@ -28,8 +29,40 @@ class DetailsActivity : AppCompatActivity() {
         loadToolBar()
         loadToolBarTitle(repositorio)
 
+
+//        tabIssue.setOnClickListener {
+//            controlView(View.GONE,View.VISIBLE,View.GONE)
+//            getDetails(criador,repositorio,"issues")
+//        }
+
+        tabHost.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when(tab?.position){
+                    1->{
+                        controlView(View.GONE,View.VISIBLE,View.GONE)
+                        getDetails(criador,repositorio,"issues")
+                    }
+                    0->{
+                        controlView(View.GONE,View.VISIBLE,View.GONE)
+                        getDetails(criador,repositorio,"pulls")
+                    }
+                }
+
+            }
+        })
+
+
+
         val call = RetrofitDetailsRepository().interfaceData()
-        call.getDetailsRepositor(criador,repositorio).enqueue(object : Callback<ArrayList<ItemDetails>> {
+        call.getDetailsRepositor(criador,repositorio,"pulls").enqueue(object : Callback<ArrayList<ItemDetails>> {
             override fun onFailure(call: Call<ArrayList<ItemDetails>>, t: Throwable) {
                 Log.i("aspk",t.message)
                 Log.i("aspk",call.request().url().toString())
@@ -59,6 +92,40 @@ class DetailsActivity : AppCompatActivity() {
         })
 
 
+    }
+
+
+
+    private fun getDetails(criador:String,repositorio:String,request:String){
+        val call = RetrofitDetailsRepository().interfaceData()
+        call.getDetailsRepositor(criador,repositorio,request).enqueue(object : Callback<ArrayList<ItemDetails>> {
+            override fun onFailure(call: Call<ArrayList<ItemDetails>>, t: Throwable) {
+                Log.i("aspk",t.message)
+                Log.i("aspk",call.request().url().toString())
+            }
+
+            override fun onResponse(call: Call<ArrayList<ItemDetails>>, response: Response<ArrayList<ItemDetails>>) {
+                if(response.isSuccessful){
+                    var resposta = response.body()
+                    resposta?.let {item->
+
+                        Log.i("aspk",call.request().url().toString())
+                        if(resposta.isNotEmpty()){
+
+
+                            initUI(resposta)
+                            controlView(View.VISIBLE,View.GONE, View.GONE)
+                        }else if (resposta.isEmpty()){
+                            lblRepositoryName.text = repositorio
+                            controlView(View.GONE,View.GONE, View.VISIBLE)
+                        }
+
+
+                    }
+                }
+
+            }
+        })
     }
 
 

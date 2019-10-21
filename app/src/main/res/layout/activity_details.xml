@@ -17,12 +17,34 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-          </androidx.appcompat.widget.Toolbar>
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabHost"
+            style="@style/Widget.MaterialComponents.TabLayout.Colored"
+            android:layout_width="match_parent"
+            app:tabInlineLabel="true"
+            app:tabTextAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabPull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/source_pull"
+                android:text="Pull Requests" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabIssue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/alert_circle_outline"
+                android:text="Issues" />
+        </com.google.android.material.tabs.TabLayout>
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_detailsactivity" />
+        <include layout="@layout/content_detailsactivity" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
