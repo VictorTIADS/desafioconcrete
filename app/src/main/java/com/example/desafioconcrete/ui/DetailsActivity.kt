@@ -30,11 +30,6 @@ class DetailsActivity : AppCompatActivity() {
         loadToolBarTitle(repositorio)
 
 
-//        tabIssue.setOnClickListener {
-//            controlView(View.GONE,View.VISIBLE,View.GONE)
-//            getDetails(criador,repositorio,"issues")
-//        }
-
         tabHost.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
