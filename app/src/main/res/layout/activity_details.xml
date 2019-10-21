@@ -23,6 +23,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-<!--    <include layout="@layout/content_detailsactivity" />-->
+    <include layout="@layout/content_detailsactivity" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
