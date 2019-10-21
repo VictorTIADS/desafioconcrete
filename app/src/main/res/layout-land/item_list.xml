@@ -13,27 +13,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="3dp"
         android:fontFamily="@font/quicksandbold"
         android:text="Nome Repositório"
         android:textColor="@color/colorText1"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/hintDescription"
-        app:layout_constraintEnd_toStartOf="@+id/hintImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/hintImage"
-        android:layout_width="75dp"
-        android:layout_height="62dp"
+        android:layout_width="130dp"
+        android:layout_height="104dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hintTitle"
         tools:srcCompat="@tools:sample/avatars" />
-
 
     <TextView
         android:id="@+id/lblUsername"
@@ -50,13 +45,12 @@
 
     <TextView
         android:id="@+id/hintDescription"
-        android:layout_width="247dp"
-        android:layout_height="50dp"
+        android:layout_width="502dp"
+        android:layout_height="81dp"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginBottom="35dp"
         android:ellipsize="end"
-        android:maxLines="2"
+        android:maxLines="4"
         android:text="RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM."
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/hintImage"

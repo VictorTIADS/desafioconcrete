@@ -18,9 +18,9 @@ class AdapterDetails(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var detail = detailsList[position]
-        var title = holder.itemView.lblTitleName
+        var title = holder.itemView.hint3
         var description = holder.itemView.lblDescricaoRepositorioDetails
-        var username = holder.itemView.lblUsernameDetails
+        var username = holder.itemView.hint2
         var image = holder.itemView.imageViewDetails
 
         title.text = detail.title
@@ -28,7 +28,7 @@ class AdapterDetails(
         username.text = detail.user.login
 
         ContextCompat.getDrawable(context, R.drawable.owner)?.let {
-            Picasso.get().load(detail.user.avatar_url).placeholder(it).centerCrop().resize(500, 500)
+            Picasso.get().load(detail.user.avatar_url).placeholder(it).centerCrop().resize(1000, 1000)
                 .into(image)
         }
     }

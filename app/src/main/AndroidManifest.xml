@@ -14,7 +14,7 @@
 
 
         <activity
-            android:name=".view.SplashActivity"
+            android:name=".ui.SplashActivity"
             android:theme="@style/SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,18 +25,19 @@
 
 
         <activity
-            android:name=".view.DetailsActivity"
-            android:parentActivityName=".view.MainActivity"
+            android:name=".ui.DetailsActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/DetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.MainActivity" />
+                android:value=".ui.MainActivity" />
 
 
         </activity>
 
 
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".ui.MainActivity"
+            android:launchMode="singleTop">
 
         </activity>
 

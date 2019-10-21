@@ -1,4 +1,4 @@
-package com.example.desafioconcrete.view
+package com.example.desafioconcrete.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +17,11 @@ class SplashActivity : AppCompatActivity() {
             override fun run() {
 
                 startActivity(intent)
+                finish()
+
             }
-        },2000)
+        },200)
+
     }
 }
 

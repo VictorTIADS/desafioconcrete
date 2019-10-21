@@ -8,10 +8,4 @@ data class ItemPropities(
     val language:String,
     val owner:Owner
 
-
-
-
-
-
-
 )

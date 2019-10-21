@@ -6,66 +6,74 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    tools:context=".ui.MainActivity">
 
+<!--&lt;!&ndash;    <include&ndash;&gt;-->
+<!--    android:id="@+id/splash"-->
+<!--&lt;!&ndash;        android:id="@+id/splash"&ndash;&gt;-->
+<!--&lt;!&ndash;        layout="@layout/activity_splash"/>&ndash;&gt;-->
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/SwipeLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/spin_kitWave"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/splash"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recicleView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <include layout="@layout/hint_item"/>
+            <include layout="@layout/hint_item"/>
+            <include layout="@layout/hint_item"/>
+            <include layout="@layout/hint_item"/>
+            <include layout="@layout/hint_item"/>
+        </LinearLayout>
 
-            android:visibility="gone"
-            tools:listitem="@layout/item_list"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/spin_kit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        style="@style/SpinKitView.WanderingCubes"
-        app:SpinKit_Color="@color/colorBlack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/SwipeLayout"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/lblLoading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Carregando..."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spin_kit" />
-
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/spin_kitWave"
-        style="@style/SpinKitView.ThreeBounce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:SpinKit_Color="@color/colorBlack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+android:id="@+id/SwipeLayout"
+android:layout_height="0dp"
+android:layout_width="0dp"
+app:layout_constraintBottom_toTopOf="@+id/spin_kitWave"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent">
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recicleView"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:listitem="@layout/item_list" />
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+<com.github.ybq.android.spinkit.SpinKitView
+style="@style/SpinKitView.ThreeBounce"
+android:id="@+id/spin_kitWave"
+android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:visibility="gone"
+app:SpinKit_Color="@color/colorBlack"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
