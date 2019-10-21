@@ -46,7 +46,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-
+        android:ellipsize="end"
+        android:maxLines="3"
         android:layout_marginEnd="50dp"
         android:text="Body do pull request lorem ipsum dolor sit amet lorem ipsum dolor  ipsum dolor"
         app:layout_constraintEnd_toEndOf="parent"
