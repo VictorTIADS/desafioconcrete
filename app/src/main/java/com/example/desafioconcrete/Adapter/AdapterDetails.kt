@@ -1,6 +1,8 @@
 package com.example.desafioconcrete.Adapter
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +24,7 @@ class AdapterDetails(
         var description = holder.itemView.lblDescricaoRepositorioDetails
         var username = holder.itemView.hint2
         var image = holder.itemView.imageViewDetails
+        var link = detail.html_url
 
         title.text = detail.title
         description.text = detail.body
@@ -30,6 +33,12 @@ class AdapterDetails(
         ContextCompat.getDrawable(context, R.drawable.owner)?.let {
             Picasso.get().load(detail.user.avatar_url).placeholder(it).centerCrop().resize(1000, 1000)
                 .into(image)
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(link)
+            context.startActivity(intent)
         }
     }
 
