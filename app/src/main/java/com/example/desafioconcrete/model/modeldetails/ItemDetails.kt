@@ -7,5 +7,4 @@ data class ItemDetails(
     val body: String,
     val user: Owner
 
-
 )

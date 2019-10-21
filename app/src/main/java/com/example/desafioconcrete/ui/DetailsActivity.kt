@@ -28,14 +28,6 @@ class DetailsActivity : AppCompatActivity() {
         loadToolBar()
         loadToolBarTitle(repositorio)
 
-
-
-
-
-
-
-
-
         val call = RetrofitDetailsRepository().interfaceData()
         call.getDetailsRepositor(criador,repositorio).enqueue(object : Callback<ArrayList<ItemDetails>> {
             override fun onFailure(call: Call<ArrayList<ItemDetails>>, t: Throwable) {

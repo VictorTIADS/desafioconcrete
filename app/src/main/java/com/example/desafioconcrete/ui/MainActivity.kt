@@ -66,9 +66,6 @@ class MainActivity : AppCompatActivity() {
             controlView(View.GONE, View.GONE, View.VISIBLE, View.VISIBLE, false)
             viewModel.loadMore()
 
-
-
-
         })
 
 
@@ -88,79 +85,7 @@ class MainActivity : AppCompatActivity() {
         spin_kitWave.visibility = Wave
     }
 
-
 }
-
-
-//    fun getRepositories() {
-//        var call = RetrofitRepositories().interfaceData()
-//        call.getRepositore("language:Java", "stars", 1).enqueue(object : Callback<Response> {
-//            override fun onFailure(call: Call<Response>, t: Throwable) {
-//
-//                setContentView(R.layout.error_layout)
-//
-//            }
-//
-//            override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
-//                if (response.code() == 200) {
-//
-//                    val resposta = response.body()
-//                    resposta?.let {
-//
-//                        controlView(View.GONE, View.GONE, View.VISIBLE, View.GONE, false)
-//                        initIU(resposta.items)
-//
-//
-//                    }
-//                }
-//            }
-//        })
-//    }
-
-
-//                recicleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-//
-//                        if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
-//                            isScrolling = true
-//
-//                        }
-//                        super.onScrollStateChanged(recyclerView, newState)
-//                    }
-//
-//                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//
-//                        Log.i(
-//                            "aspk",
-//                            "CurrentItems:${currentItems} scrolloutItems:${scrollOutItems} = ${totalItems} isScrolling:${isScrolling}"
-//                        )
-//                        currentItems = layoutManeger.childCount
-//                        totalItems = layoutManeger.itemCount
-//                        scrollOutItems = layoutManeger.findFirstVisibleItemPosition()
-//
-//
-//                        if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
-//                            //data fetch
-//                            isScrolling = false
-//                            controlView(View.GONE, View.GONE, View.VISIBLE, View.VISIBLE, false)
-//                            page = page + 1
-//
-//
-//
-//
-//
-//
-//
-//                        }
-//                        super.onScrolled(recyclerView, dx, dy)
-//                    }
-//
-//
-//                })
-
-
-
-
 
 
 
