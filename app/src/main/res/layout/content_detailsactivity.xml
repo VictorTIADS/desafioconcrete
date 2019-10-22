@@ -28,6 +28,7 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewDetails"
         android:layout_width="match_parent"
