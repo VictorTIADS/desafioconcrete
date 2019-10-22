@@ -9,7 +9,6 @@
     android:background="#011f"
     android:orientation="vertical">
 
-
     <TextView
 
         android:id="@+id/lblRepositoryName"

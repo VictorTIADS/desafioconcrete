@@ -19,14 +19,11 @@ interface InterfaceData {
 
     ): Call<Response>
 
-
-
     @GET("repos/{criador}/{repositorio}/{request}")
     fun getDetailsRepositor(
         @Path("criador") criador:String = "",
         @Path("repositorio") repositorio:String = "",
         @Path("request")request:String = ""
-
 
 
     ):Call<ArrayList<ItemDetails>>

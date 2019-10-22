@@ -22,7 +22,7 @@ class MainViewModel : ViewModel() {
 
          repositoriesLiveData.value =  it?.items
         },{
-           // Log.i("aspk",it)
+
         })
     }
 
@@ -35,7 +35,7 @@ class MainViewModel : ViewModel() {
             }
 
         },{
-           // Log.i("aspk",it)
+
         })
     }
 

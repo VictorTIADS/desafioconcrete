@@ -42,7 +42,6 @@
                 android:text="Issues" />
         </com.google.android.material.tabs.TabLayout>
 
-
     </com.google.android.material.appbar.AppBarLayout>
 
         <include layout="@layout/content_detailsactivity" />

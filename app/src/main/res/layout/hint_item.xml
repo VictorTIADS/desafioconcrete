@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
     <TextView
         android:id="@+id/hintTitle"
         android:layout_width="200dp"
@@ -17,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="#9999"/>
 
-
     <TextView
         android:id="@+id/hintImage"
         android:layout_width="75dp"
@@ -27,16 +25,12 @@
         app:layout_constraintTop_toTopOf="@+id/hintTitle"
         android:background="#9999"/>
 
-
     <TextView
         android:id="@+id/lblUsername"
         android:layout_width="75dp"
         android:layout_height="21dp"
         android:layout_marginTop="5dp"
         android:background="#9999"
-
-
-
         app:layout_constraintEnd_toEndOf="@+id/hintImage"
         app:layout_constraintStart_toStartOf="@+id/hintImage"
         app:layout_constraintTop_toBottomOf="@+id/hintImage" />
@@ -58,7 +52,6 @@
         android:id="@+id/lblNomeSobrenome"
         android:layout_width="109dp"
         android:layout_height="17dp"
-
         android:background="#9999"
         app:layout_constraintEnd_toEndOf="@+id/lblUsername"
         app:layout_constraintStart_toStartOf="@+id/lblUsername"
@@ -79,11 +72,7 @@
         android:layout_width="50dp"
         android:layout_height="33dp"
         android:layout_marginStart="3dp"
-
-
-
         android:background="#9999"
-
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -105,7 +94,6 @@
         android:layout_height="0.5dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-
         android:background="@color/colorBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,10 +104,7 @@
         android:layout_width="40dp"
         android:layout_height="33dp"
         android:layout_marginStart="3dp"
-
-
         android:background="#9999"
-
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
@@ -130,10 +115,7 @@
         android:layout_width="50dp"
         android:layout_height="33dp"
         android:layout_marginStart="24dp"
-
-
         android:background="#9999"
-
         app:layout_constraintBottom_toBottomOf="@+id/lblNumeroStar"
         app:layout_constraintStart_toEndOf="@+id/lblNumeroStar"
         app:layout_constraintTop_toTopOf="@+id/lblNumeroStar" />
