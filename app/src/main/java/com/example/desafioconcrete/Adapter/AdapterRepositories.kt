@@ -68,11 +68,7 @@ class AdapterRepositories(
         return ViewlHolder(view)
     }
 
-    override fun getItemCount(): Int {
-
-        return repositoriesList.size
-    }
-
+    override fun getItemCount() = repositoriesList.size
 
 }
 
