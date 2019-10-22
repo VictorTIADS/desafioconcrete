@@ -44,8 +44,6 @@ class AdapterRepositories(
         Language.text = repositorio.language
 
 
-
-
         ContextCompat.getDrawable(context, R.drawable.owner)?.let {
             Picasso.get().load(repositorio.owner.avatar_url).placeholder(
                 it

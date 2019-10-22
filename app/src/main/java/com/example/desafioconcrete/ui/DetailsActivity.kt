@@ -54,8 +54,6 @@ class DetailsActivity : AppCompatActivity() {
             }
         })
 
-
-
         val call = RetrofitDetailsRepository().interfaceData()
         call.getDetailsRepositor(criador,repositorio,"pulls").enqueue(object : Callback<ArrayList<ItemDetails>> {
             override fun onFailure(call: Call<ArrayList<ItemDetails>>, t: Throwable) {
@@ -71,14 +69,12 @@ class DetailsActivity : AppCompatActivity() {
                         Log.i("aspk",call.request().url().toString())
                         if(resposta.isNotEmpty()){
 
-
                             initUI(resposta)
                             controlView(View.VISIBLE,View.GONE, View.GONE)
-                        }else if (resposta.isEmpty()){
+                        } else if (resposta.isEmpty()){
                             lblRepositoryName.text = repositorio
                             controlView(View.GONE,View.GONE, View.VISIBLE)
                         }
-
 
                     }
                 }
@@ -88,8 +84,6 @@ class DetailsActivity : AppCompatActivity() {
 
 
     }
-
-
 
     private fun getDetails(criador:String,repositorio:String,request:String){
         val call = RetrofitDetailsRepository().interfaceData()

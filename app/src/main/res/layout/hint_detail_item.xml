@@ -9,14 +9,11 @@
         android:id="@+id/barDetails"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:background="@color/colorBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewDetails" />
-
-
 
     <TextView
         android:id="@+id/hint1"
@@ -42,9 +39,8 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
-
         android:layout_marginEnd="50dp"
-      android:background="#9999"
+        android:background="#9999"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/hint3"
         app:layout_constraintTop_toBottomOf="@+id/hint3" />
@@ -57,9 +53,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-
-
-
         android:background="#9999"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
