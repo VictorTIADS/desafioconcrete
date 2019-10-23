@@ -12,7 +12,7 @@ import com.example.desafioconcrete.R
 import com.example.desafioconcrete.listener.ScrollListener
 import com.example.desafioconcrete.model.ItemPropities
 import com.example.desafioconcrete.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_mainactivity.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
