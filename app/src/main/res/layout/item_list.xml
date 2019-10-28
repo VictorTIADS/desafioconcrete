@@ -54,6 +54,7 @@
         android:layout_marginBottom="35dp"
         android:ellipsize="end"
         android:maxLines="2"
+        android:textColor="@color/colorGray"
         android:text="RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM."
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/hintImage"

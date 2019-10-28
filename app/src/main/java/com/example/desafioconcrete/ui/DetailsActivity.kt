@@ -1,5 +1,7 @@
 package com.example.desafioconcrete.ui
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,11 +22,14 @@ import retrofit2.Response
 
 class DetailsActivity : AppCompatActivity() {
 
+    lateinit var repositorio: String
+    lateinit var criador: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        val repositorio = intent.getStringExtra(Constants.REPOSITORIO)
-        val criador = intent.getStringExtra(Constants.CRIADOR)
+        repositorio = intent.getStringExtra(Constants.REPOSITORIO)
+        criador = intent.getStringExtra(Constants.CRIADOR)
 
         loadToolBar()
         loadToolBarTitle(repositorio)
@@ -72,7 +77,7 @@ class DetailsActivity : AppCompatActivity() {
                             initUI(resposta)
                             controlView(View.VISIBLE,View.GONE, View.GONE)
                         } else if (resposta.isEmpty()){
-                            lblRepositoryName.text = repositorio
+
                             controlView(View.GONE,View.GONE, View.VISIBLE)
                         }
 
@@ -105,7 +110,7 @@ class DetailsActivity : AppCompatActivity() {
                             initUI(resposta)
                             controlView(View.VISIBLE,View.GONE, View.GONE)
                         }else if (resposta.isEmpty()){
-                            lblRepositoryName.text = repositorio
+
                             controlView(View.GONE,View.GONE, View.VISIBLE)
                         }
 
@@ -140,4 +145,11 @@ class DetailsActivity : AppCompatActivity() {
         loadspinkitmain.visibility = load
         empty_state.visibility = emptyState
     }
+
+    fun ShowOnWeb(view: View){
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse("https://github.com/${criador}/${repositorio}/")
+        this.startActivity(intent)
+    }
+
 }
