@@ -31,4 +31,26 @@ class BaseRepository {
         return items
     }
 
+    fun getRepositoriesOnSeach(query:String,success: (Response?) -> Unit, fail:(String?) -> Unit): MutableLiveData<Response> {
+
+        val items = MutableLiveData<Response>()
+
+        var call = RetrofitRepositories().interfaceData()
+        call.getRepositore(query, "stars").enqueue(object : Callback<Response> {
+            override fun onFailure(call: Call<Response>, t: Throwable) {
+                fail(t.message)
+
+            }
+
+            override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
+                if (response.code() == 200) {
+                    val resposta = response.body()
+                    success(resposta)
+                }
+            }
+        })
+
+        return items
+    }
+
 }

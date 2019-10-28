@@ -10,6 +10,7 @@ class MainViewModel : ViewModel() {
     private val repository = BaseRepository()
     private var repositoriesLiveData = MutableLiveData<ArrayList<ItemPropities>>()
     private val collectionAll = MutableLiveData<ArrayList<ItemPropities>>()
+    private val collectionSearch = MutableLiveData<ArrayList<ItemPropities>>()
 
     var page = 1
 
@@ -38,6 +39,16 @@ class MainViewModel : ViewModel() {
 
         })
     }
+    fun getSearch(query:String){
+        repository.getRepositoriesOnSeach(query,{
+            collectionSearch.value = it?.items
+
+        },{
+
+        })
+    }
+
+    fun getLiveDataSearch() = collectionSearch
 
     fun getLiveData() = repositoriesLiveData
 

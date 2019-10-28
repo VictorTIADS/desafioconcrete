@@ -9,5 +9,6 @@
     <color name="colorText2">#0080ff</color>
     <color name="colorFork">#ffbb2f</color>
     <color name="colorBar">#606060</color>
+    <color name="colorGray">#928D8D</color>
 
 </resources>
