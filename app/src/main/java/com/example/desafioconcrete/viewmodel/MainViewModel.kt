@@ -1,9 +1,12 @@
 package com.example.desafioconcrete.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.desafioconcrete.model.ItemPropities
 import com.example.desafioconcrete.repository.BaseRepository
+import java.lang.Exception
+
 
 class MainViewModel : ViewModel() {
 
@@ -13,40 +16,43 @@ class MainViewModel : ViewModel() {
     private val collectionSearch = MutableLiveData<ArrayList<ItemPropities>>()
 
     var page = 1
+    var querymaster = "language:Java"
+
 
     init {
-        initRequest()
+        initRequest(querymaster)
     }
 
-    fun initRequest() {
-        repository.getRepositories(page,{
-
-         repositoriesLiveData.value =  it?.items
-        },{
+    fun initRequest(query: String,paging:Int = page) {
+        repository.getRepositories(paging, query, "stars", {
+            querymaster = query
+            repositoriesLiveData.value = it?.items
+        }, {
 
         })
     }
 
-    fun loadMore(){
+    fun loadMore() {
         page++
-        repository.getRepositories(page,{
+        repository.getRepositories(page, querymaster, "stars", {
             if (it != null) {
+                Log.i("gcc",querymaster)
                 repositoriesLiveData.value?.addAll(it.items)
                 collectionAll.value = it.items
             }
 
-        },{
+        }, {
 
         })
     }
-    fun getSearch(query:String){
-        repository.getRepositoriesOnSeach(query,{
-            collectionSearch.value = it?.items
-
-        },{
-
-        })
-    }
+//    fun getSearch(query:String){
+//        repository.getRepositoriesOnSeach(query,{
+//            collectionSearch.value = it?.items
+//
+//        },{
+//
+//        })
+//    }
 
     fun getLiveDataSearch() = collectionSearch
 
