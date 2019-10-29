@@ -11,8 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
+        <activity android:name=".ui.AboutActivity"></activity>
         <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/SplashActivity">
@@ -22,8 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".ui.DetailsActivity"
             android:parentActivityName=".ui.MainActivity"
@@ -31,17 +28,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
-
-
         </activity>
-
-
-        <activity android:name=".ui.MainActivity"
-            android:launchMode="singleTop">
-
-        </activity>
-
-
+        <activity
+            android:name=".ui.MainActivity"
+            android:launchMode="singleTop"></activity>
     </application>
 
 </manifest>
