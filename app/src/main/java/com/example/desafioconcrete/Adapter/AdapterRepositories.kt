@@ -15,10 +15,7 @@ import com.example.desafioconcrete.ui.MainActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list.view.*
 
-class AdapterRepositories(
-    private val context: Context,
-    var repositoriesList: ArrayList<ItemPropities>
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdapterRepositories(private val context: Context, var repositoriesList: ArrayList<ItemPropities>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var mMainActivity: MainActivity
 

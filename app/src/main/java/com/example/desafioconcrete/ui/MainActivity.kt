@@ -1,6 +1,7 @@
 package com.example.desafioconcrete.ui
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -40,8 +41,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
         setSwipeOnListener()
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         setToolBar()
@@ -75,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.item_menu_about->{
-                alert(Appcompat, "Some text message").show()
+                startActivity(Intent(this,AboutActivity::class.java     ))
             }
         }
         return super.onOptionsItemSelected(item)
