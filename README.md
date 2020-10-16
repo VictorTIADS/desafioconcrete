@@ -1,7 +1,7 @@
 # Desafio Concrete
 
 ## ScreenShots
-- By Allana Barkokebas
+
 
 
 
